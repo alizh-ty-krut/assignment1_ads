@@ -1,0 +1,49 @@
+1. step 1
+- Edinburgh: 0 (Edinburgh)
+- Stirling: infinity
+- Glasgow: infinity
+- Perth: infinity
+- Dundee: infinity
+- unvisited [Edinburgh, Stirling, Glasgow, Perth, Dundee]
+- Edinburgh is the shortest vertice from the unvisited vertices
+2. step 2
+- visit Edinburgh
+- Edinburgh: 0 (Edinburgh)
+- Stirling: 50 (Edinburgh + Stirling)
+- Glasgow: 70 (Edinburgh + Glasgow)
+- Perth: 100 (Edinburgh + Perth)
+- Dundee: infinity
+- unvisited [Stirling, Glasgow, Perth, Dundee]
+- Stirling is the shortest vertice from the unvisited vertices
+3. step 3
+- visit Stirling
+- Edinburgh: 0 (Edinburgh)
+- Stirling: 50 (Edinburgh + Stirling)
+- Glasgow: 70 (Edinburgh + Glasgow)
+- Perth: 90 (Edinburgh + Stirling + Perth)
+- Dundee: infinity
+- unvisited [Glasgow, Perth, Dundee]
+- Glasgow is the shortest vertice from the unvisited vertices
+4. step 4
+- visit Glasgow
+- Edinburgh: 0 (Edinburgh)
+- Stirling: 50 (Edinburgh + Stirling)
+- Glasgow: 70 (Edinburgh + Glasgow)
+- Perth: 90 (Edinburgh + Stirling + Perth)
+- Dundee: infinity
+- unvisited [Perth, Dundee]
+- Perth is the shortest vertice from the unvisited vertices
+5. step 5
+- visit Perth
+- Edinburgh: 0 (Edinburgh)
+- Stirling: 50 (Edinburgh + Stirling)
+- Glasgow: 70 (Edinburgh + Glasgow)
+- Perth: 90 (Edinburgh + Stirling + Perth)
+- Dundee: 150 (Edinburgh + Stirling + Perth + Dundee)
+- unvisited [Dundee]
+- Dundee is the shortest vertice from the unvisited vertices
+6. step 6
+- visit Dundee
+- all vertices are visited
+- the shortest path from Edinburgh to Dundee is:
+- "Edinburgh + Stirling + Perth + Dundee" = 150

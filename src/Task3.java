@@ -1,45 +1,92 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Task3 {
-    public static void quickSort(int[] arr, int start, int end) {
-        if (end <= start) return;
+    static Set<Node> visitedDFS = new HashSet<>();
+    static Set<Node> visitedBFS = new HashSet<>();
 
-        int pivot = partition(arr, start, end);
-        quickSort(arr, start, pivot - 1);
-        quickSort(arr, pivot + 1, end);
-    }
+    public static void dfs(Graph graph, Node v) {
+        visitedDFS.add(v);
+        System.out.print(v.data + " ");
 
-    public static int partition(int[] arr, int start, int end) {
-        int pivot = arr[end];
-        int i = start - 1;
-        int j = start;
-        int temp = 0;
-
-        for (; j <= end - 1; j++) {
-            if (arr[j] < pivot) {
-                i++;
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+        LinkedList<Edge> neighbors = null;
+        for (LinkedList<Edge> list : graph.alist) {
+            if (list.getFirst().node == v) {
+                neighbors = list;
+                break;
             }
         }
-        i++;
-        temp = arr[i];
-        arr[i] = arr[end];
-        arr[end] = temp;
 
-        return i;
+        if (neighbors != null) {
+            for (int i = 1; i < neighbors.size(); i++) {
+                Node w = neighbors.get(i).node;
+                if (!visitedDFS.contains(w)) {
+                    dfs(graph, w);
+                }
+            }
+        }
+    }
+
+    public static void bfs(Graph graph, Node s) {
+        Queue<Node> queue = new LinkedList<>();
+        visitedBFS.add(s);
+        queue.add(s);
+
+        while (!queue.isEmpty()) {
+            Node v = queue.poll();
+            System.out.print(v.data + " ");
+
+            LinkedList<Edge> neighbors = null;
+            for (LinkedList<Edge> list : graph.alist) {
+                if (list.getFirst().node == v) {
+                    neighbors = list;
+                    break;
+                }
+            }
+
+            if (neighbors != null) {
+                for (int i = 1; i < neighbors.size(); i++) {
+                    Node w = neighbors.get(i).node;
+                    if (!visitedBFS.contains(w)) {
+                        visitedBFS.add(w);
+                        queue.add(w);
+                    }
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int arrayLength = sc.nextInt();
-        int[] arr = new int[arrayLength];
-        for (int i = 0; i < arrayLength; i++) arr[i] = sc.nextInt();
+        Graph graph = new Graph();
+        graph.addNode(new Node('A'));
+        graph.addNode(new Node('B'));
+        graph.addNode(new Node('C'));
+        graph.addNode(new Node('D'));
+        graph.addNode(new Node('E'));
+        graph.addNode(new Node('F'));
+        graph.addNode(new Node('G'));
 
-        quickSort(arr, 0, arrayLength - 1);
+        graph.addEdge(0, 2, 1);
+        graph.addEdge(0, 1, 1);
+        graph.addEdge(0, 3, 1);
+        graph.addEdge(1, 0, 1);
+        graph.addEdge(1, 2, 1);
+        graph.addEdge(1, 4, 1);
+        graph.addEdge(1, 6, 1);
+        graph.addEdge(2, 0, 1);
+        graph.addEdge(2, 1, 1);
+        graph.addEdge(2, 3, 1);
+        graph.addEdge(3, 2, 1);
+        graph.addEdge(3, 0, 1);
+        graph.addEdge(4, 6, 1);
+        graph.addEdge(4, 5, 1);
+        graph.addEdge(4, 1, 1);
+        graph.addEdge(5, 6, 1);
+        graph.addEdge(5, 4, 1);
+        graph.addEdge(6, 5, 1);
+        graph.addEdge(6, 4, 1);
 
-        if (arrayLength % 2 == 1) System.out.println(arr[arrayLength / 2]);
-        else System.out.println((arr[arrayLength / 2 - 1] + arr[arrayLength / 2]) / 2);
+        dfs(graph, graph.alist.get(0).get(0).node);
+        System.out.println();
+        bfs(graph, graph.alist.get(0).get(0).node);
     }
 }

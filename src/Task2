@@ -1,0 +1,81 @@
+1. step 1
+- A is not marked
+- add A to queue
+- mark A
+- queue [A]
+- marked [A]
+- edgeTo []
+2. step 2
+- take A from the queue
+- C is not marked
+- add C to queue
+- mark C
+- edgeTo[C] = A
+- B is not marked
+- add B to queue
+- mark B
+- edgeTo[B] = A
+- D is not marked
+- add D to queue
+- mark D
+- edgeTo[D] = A
+- queue [C B D]
+- marked [A C B D]
+- edgeTo[C:A B:A D:A]
+3. step 3
+- take C from the queue
+- A is marked
+- B is marked
+- D is marked
+- queue [B D]
+- marked [A C B D]
+- edgeTo [C:A B:A D:A]
+4. step 4
+- take B from the queue
+- A is marked
+- C is marked
+- E is not marked
+- add E to queue
+- mark E
+- edgeTo[E] = B
+- G is not marked
+- add G to the queue
+- mark G
+- edgeTo[G] = B
+- queue [D E G]
+- marked [A C B D E G]
+- edgeTo [C:A B:A D:A E:B G:B]
+5. step 5
+- take D from the queue
+- C is marked
+- A is marked
+- queue [E G]
+- marked [A C B D E G]
+- edgeTo [C:A B:A D:A E:B G:B]
+6. step 6
+- take E from the queue
+- G is marked
+- F is not marked
+- add F to the queue
+- mark F
+- edgeTo[F] = E
+- B is marked
+- queue [G F]
+- marked [A C B D E G F]
+- edgeTo [C:A B:A D:A E:B G:B F:E]
+7. step 7
+- take G from the queue
+- F is marked
+- B is marked
+- queue [F]
+- marked [A C B D E G F]
+- edgeTo [C:A B:A D:A E:B G:B F:E]
+8. step 8
+- take F from the queue
+- G is marked
+- E is marked
+- queue []
+- marked [A C B D E G F]
+- edgeTo [C:A B:A D:A E:B G:B F:E]
+
+THE END

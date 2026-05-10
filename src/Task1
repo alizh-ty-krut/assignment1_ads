@@ -1,0 +1,115 @@
+1. dfs(A)
+- C is not visited
+2. dfs(C)
+- edgeTo[C] = A
+- A is visited
+- B is not visited
+3. dfs(B)
+- edgeTo[B] = C
+- A is visited
+- C is visited
+- E is not visited
+4. dfs(E)1. dfs(A)
+         - C is not visited
+         2. dfs(C)
+         - edgeTo[C] = A
+         - A is visited
+         - B is not visited
+         3. dfs(B)
+         - edgeTo[B] = C
+         - A is visited
+         - C is visited
+         - E is not visited
+         4. dfs(E)
+         - edgeTo[E] = B
+         - G is not visited
+         5. dfs(G)
+         - edgeTo[G] = E
+         - F is not visited
+         6. dfs(F)
+         - edgeTo[F] = G
+         - G is visited
+         - E is visited
+         - F is completed
+         7. dfs(G)
+         - F is visited
+         - B is visited
+         - G is completed
+         8. dfs(E)
+         - G is visited
+         - F is visited
+         - B is visited
+         - E is completed
+         9. dfs(B)
+         - A is visited
+         - C is visited
+         - E is visited
+         - G is visited
+         - B is completed
+         10. dfs(C)
+         - A is visited
+         - B is visited
+         - D is not visited
+         11. dfs(D)
+         - edgeTo[D] = C
+         - C is visited
+         - A is visted
+         - D is completed
+         12. dfs(C)
+         - A is visted
+         - B is visited
+         - D is visited
+         - C is completed
+         13. dfs(A)
+         - C is visited
+         - B is visited
+         - D is visited
+         - A is completed
+
+         THE END
+- edgeTo[E] = B
+- G is not visited
+5. dfs(G)
+- edgeTo[G] = E
+- F is not visited
+6. dfs(F)
+- edgeTo[F] = G
+- G is visited
+- E is visited
+- F is completed
+7. dfs(G)
+- F is visited
+- B is visited
+- G is completed
+8. dfs(E)
+- G is visited
+- F is visited
+- B is visited
+- E is completed
+9. dfs(B)
+- A is visited
+- C is visited
+- E is visited
+- G is visited
+- B is completed
+10. dfs(C)
+- A is visited
+- B is visited
+- D is not visited
+11. dfs(D)
+- edgeTo[D] = C
+- C is visited
+- A is visted
+- D is completed
+12. dfs(C)
+- A is visted
+- B is visited
+- D is visited
+- C is completed
+13. dfs(A)
+- C is visited
+- B is visited
+- D is visited
+- A is completed
+
+THE END
